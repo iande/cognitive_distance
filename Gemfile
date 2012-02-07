@@ -5,6 +5,7 @@ gemspec
 
 group :test do
   gem 'minitest'
+  gem 'minitest-emoji'
   gem 'autotest'
   gem 'autotest-growl'
   gem 'simplecov'
