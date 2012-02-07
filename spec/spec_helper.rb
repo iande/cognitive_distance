@@ -59,6 +59,10 @@ module CognitiveDistance::Test
       :truth
     end
 
+    def another_constant
+      :less_truth
+    end
+
     def hop_nested_modules
       #                      2
       nested = TracesModules.new
@@ -69,6 +73,33 @@ module CognitiveDistance::Test
       # 1
       hop_1_module
       # total mod hops = 6
+    end
+  end
+
+  module IncludeThis
+    def from_included_to_obj
+      some_constant
+    end
+
+    def included_constant
+      :included
+    end
+  end
+
+  class TracesModulesSub < TracesModules
+    include IncludeThis
+
+    def from_obj_to_included
+      included_constant
+    end
+
+    def from_base_to_super
+      another_constant
+    end
+
+    # This ensures that calling `hop_0_modules` calls from super to base
+    def some_constant
+      :more_truth
     end
   end
 end
