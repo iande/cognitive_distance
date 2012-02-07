@@ -1,38 +1,14 @@
 # Cognitive Distance
 
-## Use Case
+[![Build Status](https://secure.travis-ci.org/iande/cognitive_distance.png)](http://travis-ci.org/iande/cognitive_distance)
 
-  module MyThought
-    def ready?
-      configured? && connected?
-    end
-  end
+## Installing
 
-  class MyThing
-    include MyThought
+Not yet.
 
-    def initialize config=true, connect=false
-      @configured = config
-      @connected = connect
-    end
+## Usage
 
-    def connected?; @configured; end
-    def configured?; @connected; end
-  end
-
-  class MyThang
-    def initialize
-      @thing = MyThing.new
-    end
-
-    def ready?; thing.ready?; end
-
-    def thing; @thing; end
-  end
-
-  CognitiveDistance.start(MyThang.new) do
-    measure :ready?    # => 2 line hops, 1 object hop, 6 line hops, 7 line hops
-  end
+Not yet.
 
 ## License
 
