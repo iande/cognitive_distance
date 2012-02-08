@@ -31,7 +31,7 @@ module CognitiveDistance::Structures
     def to_a
       @root.children
     end
-    alias :to_arr :to_a
+    alias :to_ary :to_a
 
     def each &block
       @root.each(&block)
