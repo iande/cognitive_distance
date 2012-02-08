@@ -28,6 +28,10 @@ describe CognitiveDistance::Structures::Graph do
     @graph.edges.size.must_equal 7
   end
 
+  it "is enumerable" do
+    @graph.class.include? Enumerable
+  end
+
   it "returns vertices that share an edge with the given vertex" do
     @graph.link "vertex 1", "vertex 2", "vertex 3"
     @graph.any_edges("vertex 4").size.must_equal 0
@@ -71,7 +75,6 @@ describe CognitiveDistance::Structures::Graph do
     edge_array.must_include ["vertex 1", "vertex 2"]
     edge_array.must_include ["vertex 2", "vertex 1"]
     edge_array.must_include ["vertex 1", "vertex 4"]
-    edge_array.must_equal @graph.to_ary
   end
 
   it "is always equal to itself" do

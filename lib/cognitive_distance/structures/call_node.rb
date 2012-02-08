@@ -64,7 +64,6 @@ module CognitiveDistance::Structures
     def to_a
       [self, children.map(&:to_a)]
     end
-    alias :to_ary :to_a
 
   private
     def create_context

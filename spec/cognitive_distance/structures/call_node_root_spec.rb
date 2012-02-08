@@ -26,7 +26,6 @@ describe CognitiveDistance::Structures::CallNodeRoot do
       [c1, [] ],
       [c2, [] ]
     ]
-    @node.to_ary.must_equal @node.to_a
   end
 end
 

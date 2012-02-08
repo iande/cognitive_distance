@@ -25,6 +25,5 @@ module CognitiveDistance::Structures
     def to_a
       @children.map(&:to_a)
     end
-    alias :to_ary :to_a
   end
 end

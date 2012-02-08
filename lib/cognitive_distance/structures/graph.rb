@@ -30,7 +30,6 @@ module CognitiveDistance::Structures
       }
     end
     alias :to_a :edges
-    alias :to_ary :edges
 
     def any_edges vertex
       edges.select { |(n1,n2)| n1 == vertex || n2 == vertex }

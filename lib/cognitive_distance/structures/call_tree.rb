@@ -5,7 +5,7 @@ module CognitiveDistance::Structures
     extend Forwardable
     include Enumerable
 
-    def_delegators :@root, :empty?, :size, :to_a, :to_ary, :each
+    def_delegators :@root, :empty?, :size, :to_a, :each
     attr_reader :root
 
     def initialize

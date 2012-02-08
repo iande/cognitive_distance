@@ -34,7 +34,6 @@ describe CognitiveDistance::Structures::CallTree do
   it "converts to an array by converting the root node" do
     populate_tree
     @call_tree.to_a.must_equal @call_tree.root.to_a
-    @call_tree.to_ary.must_equal @call_tree.root.to_ary
   end
 
   it "contains all nodes when enumerated" do
