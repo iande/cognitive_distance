@@ -4,6 +4,7 @@ describe CognitiveDistance::Structures::CallNode do
   before do
     @parent = Object.new
     @node = CognitiveDistance::Structures::CallNode.new(@parent)
+    @node.trace_class = 0
   end
 
   it "sets a parent" do
@@ -71,6 +72,20 @@ describe CognitiveDistance::Structures::CallNode do
     @node.freeze
     @node.all?(&:frozen?).must_equal true
     @node.children.frozen?.must_equal true
+  end
+
+  it "converts to an array" do
+    c1 = @node.push! 1, nil, nil, nil, nil
+    c2 = @node.push! 2, nil, nil, nil, nil
+    c1_1 = c1.push! 3, nil, nil, nil, nil
+    c1_1_1 = c1_1.push! 4, nil, nil, nil, nil
+    c2_1 = c2.push! 5, nil, nil, nil, nil
+    @node.to_a.must_equal [
+      @node, [
+        [c1, [ [ c1_1, [ [c1_1_1, []] ] ] ] ],
+        [c2, [ [ c2_1, [] ] ] ]
+      ]
+    ]
   end
 end
 

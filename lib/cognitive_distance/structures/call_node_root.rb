@@ -20,5 +20,11 @@ module CognitiveDistance::Structures
       end
       self
     end
+
+    # Do the same as CallNode, except we don't include self.
+    def to_a
+      @children.map(&:to_a)
+    end
+    alias :to_ary :to_a
   end
 end

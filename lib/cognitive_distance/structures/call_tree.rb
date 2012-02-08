@@ -1,6 +1,13 @@
+require 'forwardable'
+
 module CognitiveDistance::Structures
   class CallTree
+    extend Forwardable
     include Enumerable
+
+    def_delegators :@root, :empty?, :size, :to_a, :to_ary, :each
+    attr_reader :root
+
     def initialize
       @root = CallNodeRoot.new
       @current_node = @root
@@ -15,26 +22,6 @@ module CognitiveDistance::Structures
     def returned k, m, f, l, b
       # Set the current node to the node given back
       @current_node = @current_node.pop! k, m, f, l, b
-      self
-    end
-
-    def empty?
-      @root.empty?
-    end
-
-    def size
-      @root.size
-    end
-
-    # Returns the children of the root node for
-    # when we need to traverse the trace like a tree
-    def to_a
-      @root.children
-    end
-    alias :to_ary :to_a
-
-    def each &block
-      @root.each(&block)
       self
     end
 

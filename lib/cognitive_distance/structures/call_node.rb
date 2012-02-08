@@ -61,6 +61,11 @@ module CognitiveDistance::Structures
       super
     end
 
+    def to_a
+      [self, children.map(&:to_a)]
+    end
+    alias :to_ary :to_a
+
   private
     def create_context
       trace_binding.eval("self") rescue NO_CONTEXT

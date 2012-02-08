@@ -18,5 +18,15 @@ describe CognitiveDistance::Structures::CallNodeRoot do
       found || n.equal?(@node)
     }.must_equal false
   end
+
+  it "should not include itself when converting to an array" do
+    c1 = @node.push! 1, nil, nil, nil, nil
+    c2 = @node.push! 2, nil, nil, nil, nil
+    @node.to_a.must_equal [
+      [c1, [] ],
+      [c2, [] ]
+    ]
+    @node.to_ary.must_equal @node.to_a
+  end
 end
 

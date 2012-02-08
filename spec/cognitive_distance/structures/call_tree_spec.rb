@@ -20,15 +20,21 @@ describe CognitiveDistance::Structures::CallTree do
     @call_tree.returned 3, nil, nil, nil, nil
   end
 
+  it "returns the root node" do
+    @call_tree.root.
+      is_a?(CognitiveDistance::Structures::CallNodeRoot).must_equal true
+  end
+
   it "is empty when there's nothing in the tree" do
     @call_tree.empty?.must_equal true
     @call_tree.called nil, nil, nil, nil, nil
     @call_tree.empty?.must_equal false
   end
 
-  it "only contains top level children when converted to an array" do
+  it "converts to an array by converting the root node" do
     populate_tree
-    @call_tree.to_a.map(&:trace_class).must_equal [1, 2, 3]
+    @call_tree.to_a.must_equal @call_tree.root.to_a
+    @call_tree.to_ary.must_equal @call_tree.root.to_ary
   end
 
   it "contains all nodes when enumerated" do
