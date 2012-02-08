@@ -1,18 +1,4 @@
 module CognitiveDistance
-  # TODO: What happens if an exception percolates up?
-  # We probably do not get a valid trace from this:
-  #
-  #     def meth1
-  #       meth2
-  #     rescue
-  #     end
-  #     def meth2
-  #       meth3
-  #     end
-  #     def meth3
-  #       raise "Eat it"
-  #     end
-  # 
   class Tracer
     def initialize measured
       @traced = measured
