@@ -5,6 +5,7 @@ require 'cognitive_distance/call_node_root'
 require 'cognitive_distance/call_tree'
 require 'cognitive_distance/tracer'
 require 'cognitive_distance/measurements'
+require 'cognitive_distance/transformers'
 
 module CognitiveDistance
 end
