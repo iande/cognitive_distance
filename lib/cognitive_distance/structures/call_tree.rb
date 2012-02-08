@@ -1,4 +1,4 @@
-module CognitiveDistance
+module CognitiveDistance::Structures
   class CallTree
     include Enumerable
     def initialize

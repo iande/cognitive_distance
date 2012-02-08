@@ -1,8 +1,8 @@
 module CognitiveDistance::Measurements
-  class ModuleHops
+  class DistinctModuleHops
     def measure tree
       CognitiveDistance::Transforms::CallTreeToModuleBoundaryGraph.
-        transform(tree).edges.size
+        transform(tree).edges.uniq.size
     end
   end
 end

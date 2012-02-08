@@ -1,8 +1,8 @@
-require File.expand_path('../../spec_helper', __FILE__)
+require File.expand_path('../../../spec_helper', __FILE__)
 
-describe CognitiveDistance::CallTree do
+describe CognitiveDistance::Structures::CallTree do
   before do
-    @call_tree = CognitiveDistance::CallTree.new
+    @call_tree = CognitiveDistance::Structures::CallTree.new
   end
 
   def populate_tree

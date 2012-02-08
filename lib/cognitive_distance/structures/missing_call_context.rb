@@ -1,4 +1,4 @@
-module CognitiveDistance
+module CognitiveDistance::Structures
   # Stupid simple class to ensure that when we use object identity
   # comparisons, we always get false with this.
   class MissingCallContext

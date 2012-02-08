@@ -1,9 +1,9 @@
-require File.expand_path('../../spec_helper', __FILE__)
+require File.expand_path('../../../spec_helper', __FILE__)
 
-describe CognitiveDistance::CallNode do
+describe CognitiveDistance::Structures::CallNode do
   before do
     @parent = Object.new
-    @node = CognitiveDistance::CallNode.new(@parent)
+    @node = CognitiveDistance::Structures::CallNode.new(@parent)
   end
 
   it "sets a parent" do

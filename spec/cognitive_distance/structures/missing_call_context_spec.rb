@@ -1,8 +1,8 @@
-require File.expand_path('../../spec_helper', __FILE__)
+require File.expand_path('../../../spec_helper', __FILE__)
 
-describe CognitiveDistance::MissingCallContext do
+describe CognitiveDistance::Structures::MissingCallContext do
   before do
-    @missing_call_context = CognitiveDistance::MissingCallContext.new
+    @missing_call_context = CognitiveDistance::Structures::MissingCallContext.new
   end
 
   it "is not equal to some other object" do
@@ -10,7 +10,7 @@ describe CognitiveDistance::MissingCallContext do
   end
 
   it "is not equal to another missing call context" do
-    other = CognitiveDistance::MissingCallContext.new
+    other = CognitiveDistance::Structures::MissingCallContext.new
     @missing_call_context.equal?(other).must_equal false
   end
 

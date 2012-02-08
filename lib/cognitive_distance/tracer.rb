@@ -1,4 +1,18 @@
 module CognitiveDistance
+  # TODO: What happens if an exception percolates up?
+  # We probably do not get a valid trace from this:
+  #
+  #     def meth1
+  #       meth2
+  #     rescue
+  #     end
+  #     def meth2
+  #       meth3
+  #     end
+  #     def meth3
+  #       raise "Eat it"
+  #     end
+  # 
   class Tracer
     def initialize measured
       @traced = measured
@@ -12,7 +26,10 @@ module CognitiveDistance
 
   private
     def __with_kernel_trace__
-      tree = CognitiveDistance::CallTree.new
+      tree = CognitiveDistance::Structures::CallTree.new
+      # Ruby, I love you. Even if exceptions are raised, or catch/throw is
+      # employed, you still give me a 'return' event as the stack unwinds.
+      # *hug*
       Kernel.set_trace_func lambda { |ev, fn, no, meth, bind, klass|
         case ev
         when 'call'

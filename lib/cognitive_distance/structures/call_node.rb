@@ -1,4 +1,4 @@
-module CognitiveDistance
+module CognitiveDistance::Structures
   class CallNode
     include Enumerable
 

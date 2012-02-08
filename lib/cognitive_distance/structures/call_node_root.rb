@@ -1,4 +1,4 @@
-module CognitiveDistance
+module CognitiveDistance::Structures
   # Some special behavior on root
   class CallNodeRoot < CallNode
     # We never go looking for the parents of root.
