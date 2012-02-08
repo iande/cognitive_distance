@@ -1,5 +1,7 @@
 module CognitiveDistance::Structures
   class Graph
+    include Enumerable
+
     def initialize
       # The keys are the out-bound vertex
       @links = {}
@@ -48,6 +50,10 @@ module CognitiveDistance::Structures
 
     def empty?
       @links.empty?
+    end
+
+    def each &block
+      edges.each &block
     end
 
     # Two graphs are equal if they have the same edges and vertices

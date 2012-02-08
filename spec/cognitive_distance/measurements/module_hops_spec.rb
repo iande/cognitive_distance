@@ -30,5 +30,25 @@ describe CognitiveDistance::Measurements::ModuleHops do
     ]
     @measurement.measure(tree).must_equal 3
   end
+
+  it "measures an object trace directly" do
+    @graph.expect :edges, [
+      [ "module 1", "module 2" ],
+      [ "module 1", "module 4" ],
+      [ "module 1", "module 2" ]
+    ]
+    # Even though this does create a real trace, we're still intercepting
+    # the transformation, so we can honey badger away.
+    CognitiveDistance::Measurements::ModuleHops.measure("test", :length).must_equal 3
+  end
+
+  it "registers its measurement" do
+    @graph.expect :edges, [
+      [ "module 1", "module 2" ],
+      [ "module 1", "module 4" ],
+      [ "module 1", "module 2" ]
+    ]
+    CognitiveDistance::Measurements.measure_module_hops("test", :length).must_equal 3
+  end
 end
 

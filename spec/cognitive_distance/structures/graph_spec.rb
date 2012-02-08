@@ -29,7 +29,12 @@ describe CognitiveDistance::Structures::Graph do
   end
 
   it "is enumerable" do
-    @graph.class.include? Enumerable
+    @graph.class.must_include Enumerable
+  end
+
+  it "enumerates over edges" do
+    collected = @graph.map { |e| e }
+    collected.must_equal @graph.edges
   end
 
   it "returns vertices that share an edge with the given vertex" do

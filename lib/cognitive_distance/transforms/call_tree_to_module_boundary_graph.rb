@@ -6,22 +6,24 @@ module CognitiveDistance::Transforms
 
     def transform tree
       CognitiveDistance::Structures::Graph.new.tap do |graph|
-        tree.to_a.each do |par|
-          link_boundary_crossings graph, par, par.children
-        end
+        link_nodes graph, tree.to_a
       end
     end
 
   private
-    def link_boundary_crossings graph, parent, children
-      unless children.empty?
-        children.each do |child|
-          if !parent.context.equal?(child.context)
-            graph.link parent, child
-          end
-          link_boundary_crossings graph, child, child.children
+    def link_nodes graph, node_arr, prefix=""
+      node_arr.each do |parent, children|
+        link_boundary_crossings graph, parent, children, "#{prefix}\t"
+      end
+   end
+
+    def link_boundary_crossings graph, parent, children, prefix=""
+      children.each do |(child, _)|
+        if !parent.context.equal?(child.context)
+          graph.link parent, child
         end
       end
+      link_nodes graph, children, prefix
     end
   end
 end

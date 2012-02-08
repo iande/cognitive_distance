@@ -8,7 +8,41 @@ Not yet.
 
 ## Usage
 
-Not yet.
+### Measure the number of modules "hopped" by a method call
+
+    class Mine
+      def my_method
+        Yours.new.your_method
+      end
+    end
+
+    class Yours
+      def initialize
+      end
+
+      def your_method
+      end
+    end
+
+    CognitiveDistance::Measurements.measure_module_hops Mine.new, :my_method
+    # => 2
+    CognitiveDistance::Measurements.measure_distinct_module_hopes Mine.new, :my_method
+    # => 1
+
+The module hops are:
+
+1. Instantiating a new `Yours` object
+2. Calling `your_method` on the new instance
+
+There is only 1 distinct module hop because `my_method => Yours#initialize`
+and `my_method => Yours#your_method` cross the same boundary.
+
+At this time, only Ruby code is traced, so if `Yours` did not define an
+`initialize` method, both hop counts would be 1.
+
+*Brief aside*: tracing `c-call` events changes nothing in this case, as only
+no instance methods of the `Yours` instance are invoked until `#your_method`
+is called.
 
 ## License
 
