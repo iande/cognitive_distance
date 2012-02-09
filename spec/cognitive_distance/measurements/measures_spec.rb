@@ -2,7 +2,7 @@ require File.expand_path('../../../spec_helper', __FILE__)
 
 describe CognitiveDistance::Measurements::Measures do
   it "registers a named measurement" do
-    class Foobar
+    class MeasuresFoobar
       extend CognitiveDistance::Measurements::Measures
       measures :lameness
     end
@@ -10,7 +10,7 @@ describe CognitiveDistance::Measurements::Measures do
   end
 
   it "performs the registered measurement" do
-    class Foobaz
+    class MeasuresFoobaz
       extend CognitiveDistance::Measurements::Measures
       measures :suckiness
 
@@ -22,11 +22,11 @@ describe CognitiveDistance::Measurements::Measures do
       end
     end
     CognitiveDistance.measure_suckiness('foo', 'bar', 'blarg')
-    Foobaz.received_args.must_equal ['foo', 'bar', 'blarg']
+    MeasuresFoobaz.received_args.must_equal ['foo', 'bar', 'blarg']
   end
 
   it "allows a measurement method to be defined" do
-    class Fooboss
+    class MeasuresFooboss
       extend CognitiveDistance::Measurements::Measures
       measures :unfortunately, :most_unfortunate
 
@@ -38,7 +38,7 @@ describe CognitiveDistance::Measurements::Measures do
       end
     end
     CognitiveDistance.measure_unfortunately(:x, :y, :z)
-    Fooboss.received_args.must_equal [:x, :y, :z]
+    MeasuresFooboss.received_args.must_equal [:x, :y, :z]
   end
 end
 

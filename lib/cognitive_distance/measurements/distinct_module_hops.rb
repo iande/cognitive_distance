@@ -1,6 +1,8 @@
 module CognitiveDistance::Measurements
   class DistinctModuleHops
     extend Measures
+    extend Graphs
+    
     measures :distinct_module_hops
 
     def measure tree
@@ -10,8 +12,10 @@ module CognitiveDistance::Measurements
         }.uniq.size
     end
 
-    def self.measure obj, meth
-      new.measure(CognitiveDistance::Tracer.new(obj).trace(meth))
+    class << self
+      def measure obj, meth
+        new.measure(CognitiveDistance::Tracer.new(obj).trace(meth))
+      end
     end
   end
 end

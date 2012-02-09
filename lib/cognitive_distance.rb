@@ -1,8 +1,17 @@
 module CognitiveDistance
   class << self
     def register_measurement mod, method, measurement
+      register_generic "measure", mod, method, measurement
+    end
+
+    def register_grapher mod, method, grapher
+      register_generic "graph", mod, method, grapher
+    end
+
+  private
+    def register_generic prefix, mod, method, suffix
       instance_eval <<-EODEF, __FILE__, __LINE__
-        def measure_#{measurement}(*args)
+        def #{prefix}_#{suffix}(*args)
           #{mod.name}.#{method} *args
         end
       EODEF
