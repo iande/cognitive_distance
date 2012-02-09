@@ -1,7 +1,6 @@
 module CognitiveDistance::Measurements
   class DistinctModuleHops
     extend Measures
-    extend Graphs
     
     measures :distinct_module_hops
 
