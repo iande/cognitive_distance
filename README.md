@@ -4,7 +4,12 @@
 
 ## Installing
 
-Not yet.
+The way you install every other gem,
+
+    gem install cognitive_distance
+
+but we're at a pre-alpha stage here, so you'd have to specify `--pre`, and
+you really shouldn't bother.
 
 ## Usage
 
