@@ -1,8 +1,7 @@
 module CognitiveDistance::Measurements
   class ModuleHops
-    extend Measurement
-    
-    register :module_hops
+    extend Measures
+    measures :module_hops
 
     def measure tree
       CognitiveDistance::Transforms::CallTreeToModuleBoundaryGraph.

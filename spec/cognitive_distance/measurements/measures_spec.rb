@@ -1,18 +1,18 @@
 require File.expand_path('../../../spec_helper', __FILE__)
 
-describe CognitiveDistance::Measurements::Measurement do
+describe CognitiveDistance::Measurements::Measures do
   it "registers a named measurement" do
     class Foobar
-      extend CognitiveDistance::Measurements::Measurement
-      register :lameness
+      extend CognitiveDistance::Measurements::Measures
+      measures :lameness
     end
     CognitiveDistance.must_respond_to :measure_lameness
   end
 
   it "performs the registered measurement" do
     class Foobaz
-      extend CognitiveDistance::Measurements::Measurement
-      register :suckiness
+      extend CognitiveDistance::Measurements::Measures
+      measures :suckiness
 
       class << self
         attr_reader :received_args
@@ -27,8 +27,8 @@ describe CognitiveDistance::Measurements::Measurement do
 
   it "allows a measurement method to be defined" do
     class Fooboss
-      extend CognitiveDistance::Measurements::Measurement
-      register :unfortunately, :most_unfortunate
+      extend CognitiveDistance::Measurements::Measures
+      measures :unfortunately, :most_unfortunate
 
       class << self
         attr_reader :received_args
