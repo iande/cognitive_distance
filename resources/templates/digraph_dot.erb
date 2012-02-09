@@ -1,0 +1,5 @@
+digraph "<%= name %>" {
+<% graph.edges.each do |(v1, v2)| %>
+  "<%= labeler[v1] %>" -> "<%= labeler[v2] %>";
+<% end %>
+}
