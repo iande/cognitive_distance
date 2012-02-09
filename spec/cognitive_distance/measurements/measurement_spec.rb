@@ -6,7 +6,7 @@ describe CognitiveDistance::Measurements::Measurement do
       extend CognitiveDistance::Measurements::Measurement
       register :lameness
     end
-    CognitiveDistance::Measurements.must_respond_to :measure_lameness
+    CognitiveDistance.must_respond_to :measure_lameness
   end
 
   it "performs the registered measurement" do
@@ -21,7 +21,7 @@ describe CognitiveDistance::Measurements::Measurement do
         end
       end
     end
-    CognitiveDistance::Measurements.measure_suckiness('foo', 'bar', 'blarg')
+    CognitiveDistance.measure_suckiness('foo', 'bar', 'blarg')
     Foobaz.received_args.must_equal ['foo', 'bar', 'blarg']
   end
 
@@ -37,7 +37,7 @@ describe CognitiveDistance::Measurements::Measurement do
         end
       end
     end
-    CognitiveDistance::Measurements.measure_unfortunately(:x, :y, :z)
+    CognitiveDistance.measure_unfortunately(:x, :y, :z)
     Fooboss.received_args.must_equal [:x, :y, :z]
   end
 end

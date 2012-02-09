@@ -1,3 +1,15 @@
+module CognitiveDistance
+  class << self
+    def register_measurement mod, method, measurement
+      instance_eval <<-EODEF, __FILE__, __LINE__
+        def measure_#{measurement}(*args)
+          #{mod.name}.#{method} *args
+        end
+      EODEF
+    end
+  end
+end
+
 require 'cognitive_distance/version'
 require 'cognitive_distance/structures'
 require 'cognitive_distance/tracer'
@@ -5,8 +17,6 @@ require 'cognitive_distance/measurements'
 require 'cognitive_distance/transforms'
 require 'cognitive_distance/presenters'
 
-module CognitiveDistance
-end
 # Copyright 2012 Ian D. Eccles
 
 # Licensed under the Apache License, Version 2.0 (the "License");

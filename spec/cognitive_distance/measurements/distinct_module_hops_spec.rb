@@ -46,7 +46,7 @@ describe CognitiveDistance::Measurements::DistinctModuleHops do
   end
 
   it "registers its measurement" do
-    CognitiveDistance::Measurements.measure_distinct_module_hops("test", :length).must_equal 2
+    CognitiveDistance.measure_distinct_module_hops("test", :length).must_equal 2
   end
 end
 

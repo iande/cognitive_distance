@@ -48,7 +48,7 @@ describe CognitiveDistance::Measurements::ModuleHops do
       [ "module 1", "module 4" ],
       [ "module 1", "module 2" ]
     ]
-    CognitiveDistance::Measurements.measure_module_hops("test", :length).must_equal 3
+    CognitiveDistance.measure_module_hops("test", :length).must_equal 3
   end
 end
 
