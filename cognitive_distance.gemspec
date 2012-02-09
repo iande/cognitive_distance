@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Ian D. Eccles"]
   s.email       = ["ian.eccles@gmail.com"]
   s.homepage    = ""
-  s.summary     = %q{A measure of locality}
-  s.description = %q{A tool for measuring locality of Ruby source}
+  s.summary     = %q{A (currently incomplete) measure of locality}
+  s.description = %q{A tool for measuring locality of Ruby source. No real features yet, wait for the non-pre version}
 
   s.rubyforge_project = "cognitive_distance"
 
