@@ -11,19 +11,19 @@ module CognitiveDistance::Transforms
     end
 
   private
-    def link_nodes graph, node_arr, prefix=""
+    def link_nodes graph, node_arr
       node_arr.each do |parent, children|
-        link_boundary_crossings graph, parent, children, "#{prefix}\t"
+        link_boundary_crossings graph, parent, children
       end
    end
 
-    def link_boundary_crossings graph, parent, children, prefix=""
+    def link_boundary_crossings graph, parent, children
       children.each do |(child, _)|
         if !parent.context.equal?(child.context)
           graph.link parent, child
         end
       end
-      link_nodes graph, children, prefix
+      link_nodes graph, children
     end
   end
 end
