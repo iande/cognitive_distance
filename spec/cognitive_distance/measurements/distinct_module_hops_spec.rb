@@ -42,11 +42,13 @@ describe CognitiveDistance::Measurements::DistinctModuleHops do
   it "measures an object trace directly" do
     # Even though this does create a real trace, we're still intercepting
     # the transformation, so we can honey badger away.
-    CognitiveDistance::Measurements::DistinctModuleHops.measure("test", :length).must_equal 2
+    CognitiveDistance::Measurements::DistinctModuleHops.measure(
+      "test", :length).must_equal 2
   end
 
   it "registers its measurement" do
-    CognitiveDistance.measure_distinct_module_hops("test", :length).must_equal 2
+    CognitiveDistance.measure_distinct_module_hops(
+      "test", :length).must_equal 2
   end
 end
 
