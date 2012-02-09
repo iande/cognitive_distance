@@ -3,6 +3,7 @@ require 'cognitive_distance/structures'
 require 'cognitive_distance/tracer'
 require 'cognitive_distance/measurements'
 require 'cognitive_distance/transforms'
+require 'cognitive_distance/presenters'
 
 module CognitiveDistance
 end
