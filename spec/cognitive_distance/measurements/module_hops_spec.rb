@@ -24,8 +24,9 @@ module CognitiveDistance
     it "measures an object trace directly" do
       # Even though this does create a real trace, we're still intercepting
       # the transformation, so we can honey badger away.
-      CognitiveDistance::Measurements::ModuleHops.measure(
-        "test", :length).must_equal 3
+      CognitiveDistance::Measurements::ModuleHops.measure {
+        "the trace for this code is unused"
+      }.must_equal 3
     end
 
     it "graphs module boundary crossings" do
@@ -34,16 +35,21 @@ module CognitiveDistance
     end
 
     it "graphs an object trace directly" do
-      CognitiveDistance::Measurements::ModuleHops.graph(
-        "test", :length).must_equal @graph
+      CognitiveDistance::Measurements::ModuleHops.graph {
+        "the trace for this code is unused"
+      }.must_equal @graph
     end
 
     it "registers its measurement" do
-      CognitiveDistance.measure_module_hops("test", :length).must_equal 3
+      CognitiveDistance.measure_module_hops {
+        "again, not really being used"
+      }.must_equal 3
     end
 
     it "registers its grapher" do
-      CognitiveDistance.graph_module_hops("test", :length).must_equal @graph
+      CognitiveDistance.graph_module_hops {
+        "this isn't used either"
+      }.must_equal @graph
     end
   end
 end

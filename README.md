@@ -29,9 +29,10 @@ you really shouldn't bother.
       end
     end
 
-    CognitiveDistance.measure_module_hops Mine.new, :my_method
+    mine = Mine.new
+    CognitiveDistance.measure_module_hops { mine.my_method }
     # => 2
-    CognitiveDistance.measure_distinct_module_hopes Mine.new, :my_method
+    CognitiveDistance.measure_distinct_module_hops { mine.my_method }
     # => 1
 
 The module hops are:

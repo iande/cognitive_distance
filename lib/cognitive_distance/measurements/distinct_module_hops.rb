@@ -12,8 +12,13 @@ module CognitiveDistance::Measurements
     end
 
     class << self
-      def measure obj, meth
-        new.measure(CognitiveDistance::Tracer.trace { obj.__send__(meth) })
+      def measure &block
+        new.measure trace_tree(&block)
+      end
+
+    private
+      def trace_tree &block
+        CognitiveDistance::Tracer.trace &block
       end
     end
   end

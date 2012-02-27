@@ -16,17 +16,17 @@ module CognitiveDistance::Measurements
     end
 
     class << self
-      def measure obj, meth
-        new.measure(trace_tree(obj, meth))
+      def measure &block
+        new.measure trace_tree(&block)
       end
 
-      def graph obj, meth
-        new.graph(trace_tree(obj, meth))
+      def graph &block
+        new.graph trace_tree(&block)
       end
 
     private
-      def trace_tree obj, meth
-        CognitiveDistance::Tracer.trace { obj.__send__ meth }
+      def trace_tree &block
+        CognitiveDistance::Tracer.trace &block
       end
     end
   end

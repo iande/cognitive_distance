@@ -20,12 +20,15 @@ module CognitiveDistance
     end
 
     it "measures an object trace directly" do
-      Measurements::LineHops.measure(
-        "test", :length).must_equal 54
+      Measurements::LineHops.measure {
+        "never gets used"
+      }.must_equal 54
     end
 
     it "registers its measurement" do
-      CognitiveDistance.measure_line_hops("test", :length).must_equal 54
+      CognitiveDistance.measure_line_hops {
+        "never gets used"
+      }.must_equal 54
     end
     
     def make_tree
