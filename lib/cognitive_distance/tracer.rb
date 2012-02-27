@@ -10,6 +10,10 @@ module CognitiveDistance
       end
     end
 
+    def self.trace &block
+      new(block).trace(:call)
+    end
+
   private
     def __with_kernel_trace__
       tree = CognitiveDistance::Structures::CallTree.new

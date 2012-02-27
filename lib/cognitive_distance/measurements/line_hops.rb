@@ -37,3 +37,4 @@ module CognitiveDistance::Measurements
     end
   end
 end
+

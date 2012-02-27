@@ -30,6 +30,24 @@ describe CognitiveDistance::Tracer do
     ]
   end
 
+  it "traces out a given block" do
+    call_tree = CognitiveDistance::Tracer.trace do
+      @traced_obj.method1
+      @traced_obj.method4
+      @traced_obj.method3
+    end
+    to_methods(call_tree.to_a).must_equal [
+      [:method1, [
+        [:method2, [
+          [:method4, []]
+        ]],
+        [:method3, []]
+      ]],
+      [:method4, []],
+      [:method3, []]
+    ]
+  end
+
   it "traces out properly when an exception is raised" do
     call_tree = @tracer.trace(:test_raising)
     to_methods(call_tree.to_a).must_equal [
