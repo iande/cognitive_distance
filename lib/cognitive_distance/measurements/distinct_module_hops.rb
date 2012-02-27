@@ -13,7 +13,7 @@ module CognitiveDistance::Measurements
 
     class << self
       def measure obj, meth
-        new.measure(CognitiveDistance::Tracer.new(obj).trace(meth))
+        new.measure(CognitiveDistance::Tracer.trace { obj.__send__(meth) })
       end
     end
   end

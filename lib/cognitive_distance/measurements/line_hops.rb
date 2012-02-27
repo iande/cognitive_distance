@@ -15,7 +15,7 @@ module CognitiveDistance::Measurements
 
     private
       def trace_tree obj, meth
-        CognitiveDistance::Tracer.new(obj).trace(meth)
+        CognitiveDistance::Tracer.trace { obj.__send__ meth }
       end
     end
 
